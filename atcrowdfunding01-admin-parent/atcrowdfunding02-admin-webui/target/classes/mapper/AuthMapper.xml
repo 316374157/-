@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.phj.crowd.mapper.AuthMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.phj.crowd.entity.Auth">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="title" property="title" />
+        <result column="category_id" property="categoryId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, title, category_id
+    </sql>
+
+
+    <select id="getAuthByAdminId" resultType="string">
+        select DISTINCT t_auth.name
+        from t_auth
+        left join inner_role_auth on t_auth.id = inner_role_auth.auth_id
+        left join inner_admin_role on inner_role_auth.role_id = inner_admin_role.role_id
+        where inner_admin_role.admin_id = #{adminId} and t_auth.name != "" and t_auth.name is not null
+    </select>
+
+</mapper>

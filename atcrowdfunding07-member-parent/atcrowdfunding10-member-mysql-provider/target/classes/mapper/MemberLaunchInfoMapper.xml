@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.phj.crowd.mapper.MemberLaunchInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.phj.crowd.entity.po.MemberLaunchInfoPO">
+        <id column="id" property="id" />
+        <result column="memberid" property="memberid" />
+        <result column="description_simple" property="descriptionSimple" />
+        <result column="description_detail" property="descriptionDetail" />
+        <result column="phone_num" property="phoneNum" />
+        <result column="service_num" property="serviceNum" />
+        <result column="project_id" property="projectId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, memberid, description_simple, description_detail, phone_num, service_num,project_id
+    </sql>
+
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.phj.crowd.mapper.RoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.phj.crowd.entity.Role">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name
+    </sql>
+
+    <insert id="addAdminRole">
+        insert into inner_admin_role values
+            <foreach collection="roleIdList" item="roleId" separator=",">
+                (#{id},#{roleId})
+            </foreach>
+    </insert>
+
+    <insert id="addRoleAuth">
+        insert into inner_role_auth values
+        <foreach collection="authIdList" item="authId" separator=",">
+            (#{id},#{authId})
+        </foreach>
+    </insert>
+
+</mapper>

@@ -1,0 +1,21 @@
+server:
+  port: 4000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/                # eureka 注册中心的地址
+
+spring:
+  application:
+    name: phj-crowd-auth
+  redis:
+    host: 192.168.220.129
+    password: root
+  session:
+      store-type: redis
+
+ribbon:
+  # 修改ribbon默认的超时时间
+  ReadTimeout: 30000
+  ConnectTimeout: 30000

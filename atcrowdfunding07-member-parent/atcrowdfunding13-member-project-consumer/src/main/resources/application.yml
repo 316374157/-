@@ -1,0 +1,29 @@
+server:
+  port: 5000
+
+spring:
+  application:
+    name: phj-crowd-project
+  redis:
+    host: 192.168.220.129
+    password: root
+  session:
+      store-type: redis
+
+ribbon:
+  # 修改ribbon默认的超时时间
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/                # eureka 注册中心的地址
+aliyun:
+  oss:
+    access-key-id: LTAI4GHyCbv9kULmDQgKHPjG
+    access-key-secret: qyd9Q5zi8trTQQNOlCVWlpMRrAtemr
+    bucket-domain: http://projectdome.oss-cn-beijing.aliyuncs.com
+    bucket-name: projectdome
+    end-point: http://oss-cn-beijing.aliyuncs.com

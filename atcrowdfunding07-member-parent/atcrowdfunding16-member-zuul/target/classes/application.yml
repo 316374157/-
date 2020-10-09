@@ -1,0 +1,39 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: phj-crowd-zuul
+  redis:
+    host: 192.168.220.129
+    password: root
+  session:
+      store-type: redis
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/                # eureka 注册中心的地址
+
+zuul:
+  routes:
+    crowd-portal:
+      service-id: phj-crowd-auth
+      path: /**
+    crowd-project:
+      service-id: phj-crowd-project
+      path: /project/**
+    crowd-order:
+      service-id: phj-crowd-order
+      path: /order/**
+    crowd-pay:
+      service-id: phj-crowd-pay
+      path: /pay/**
+  ignored-services: "*"
+  sensitive-headers: "*"                                        # 在 Zuul 向其他微服务重定向时保持原本头信息（请求头、响应 头）
+
+ribbon:
+  # 修改ribbon默认的超时时间
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+

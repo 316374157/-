@@ -1,0 +1,36 @@
+server:
+  port: 2000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/                # eureka 注册中心的地址
+
+spring:
+  application:
+    name: phj-crowd-mysql
+
+# druid 数据源配置
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/project_crowd?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    type: com.alibaba.druid.pool.DruidDataSource
+
+# Mybatis-plus 配置
+mybatis-plus:
+  global-config:
+    # 数据源策略
+    db-config:
+      id-type: auto
+  # sql语句输出和结果输出
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 配置mapper.xml文件路径
+  mapper-locations: classpath:/mapper/*.xml
+
+ribbon:
+  # 修改ribbon默认的超时时间
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
